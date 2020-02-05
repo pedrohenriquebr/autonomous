@@ -1,0 +1,14 @@
+{
+  "name": "autonomous",
+  "version": "0.7.2",
+  "description": "Autonomous",
+  "main": "index.js",
+  "repository": "https://github.com/pedrohenriquebr/autonomous/",
+  "author": "pedrobr <pedrohenriquebraga735@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.19.2",
+    "puppeteer-core": "^2.1.0"
+  }
+}
