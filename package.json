@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/pedrohenriquebr/autonomous/",
   "author": "pedrobr <pedrohenriquebraga735@gmail.com>",
-  "license": "MIT",
+  "license": "GPLv3",
   "private": false,
   "dependencies": {
     "axios": "^0.19.2",
