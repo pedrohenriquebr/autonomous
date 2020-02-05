@@ -7,6 +7,10 @@
   "author": "pedrobr <pedrohenriquebraga735@gmail.com>",
   "license": "GPLv3",
   "private": false,
+  "keywords": [
+    "puppeteer-core",
+    "automation"
+  ],
   "dependencies": {
     "axios": "^0.19.2",
     "puppeteer-core": "^2.1.0"
