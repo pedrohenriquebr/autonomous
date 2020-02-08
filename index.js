@@ -1,14 +1,52 @@
 const core = require('./core');
 const puppeteer = require('puppeteer-core');
 const axios = require('axios');
+const chainify = require('./chainify');
+
+//I don't know when use it
+function makeChainable(fn) {
+    let p = Promise.resolve(true);
+    return (...args) => {
+        p = p.then(() => fn(...args));
+        return p;
+    };
+}
+
+class Task {
+    constructor(browser) {
+        this.browser = browser;
+        this.name = '';
+        this.isStandby = false;
+        this.pool = [];
+    }
+
+    newPage(...args) {
+        //I need help here
+    }
+
+    standby() {
+        this.standby = true;
+    }
+
+    setName(name) {
+        this.name = name;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+
+}
 
 class Autonomous {
     constructor() {
         this.attemptsCount = 10;
         this.target = undefined;
+        this.browser = undefined;
     }
 
-    tryConnect = async (host, port) => {
+    async tryConnect(host, port) {
         try {
             return await axios.get(`http://${host}:${port}/json/version`);
         } catch (error) {
@@ -19,7 +57,7 @@ class Autonomous {
     }
 
 
-    startConnection = async (host, port) => {
+    async startConnection(host, port) {
         const response = await this.tryConnect(host, port);
         const url = (response.data)['webSocketDebuggerUrl'];
         this.browser = await puppeteer.connect({
@@ -28,23 +66,40 @@ class Autonomous {
         });
     }
 
-    waitForTarget = async (predicate) => {
+    async waitForTarget(predicate) {
         this.target = await this.browser.waitForTarget(predicate, {
             timeout: 0
         });
-    };
+    }
 
-    waitForAll = async (page, itemSelectors) => Promise.all(Object.values(itemSelectors)
-        .map(d => page.waitFor(d)));
 
-    closeConnection = async () => await this.browser.disconnect();
 
-    getPages = async () => await this.browser.pages();
+    async waitForAll(page, itemSelectors) {
+        return Promise.all(Object.values(itemSelectors)
+            .map(d => page.waitFor(d)));
+    }
 
-    getTargetPage = async () => await this.target.page();
+    async closeConnection() {
+        return await this.browser.disconnect();
+    }
 
-    getTitles = async () => Promise.all((await this.getPages()).map(d => d.title()));
+    async getPages() {
+        return await this.browser.pages();
+    }
+
+    async getTargetPage() {
+        return await this.target.page()
+    }
+
+    async getTitles() {
+        return Promise.all((await this.getPages()).map(d => d.title()))
+    }
+
+    task(name) {
+        return chainify(new Task(this.browser))
+            .setName(name);
+    }
 
 }
 
-module.exports = Autonomous;
+module.exports = new Autonomous();
