@@ -2,19 +2,29 @@ let autonomous = require('./index');
 autonomous
     .task('task1')
     .newPage()
-    .goto('http://www.google.com')
-    .type("input[name='q']", "Why do I have to use Puppeteer ?")
-    .waitForSelector("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
-    .click("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
+    .goto('https://www.openprocessing.org/sketch/186320/')
+    .evaluate(d => alert('Olá !'))
 
 autonomous
     .task('task2')
     .newPage()
-    .goto('http://google.com/')
-    .type("input[name='q']", "How to use Puppeteer?")
-    .waitForSelector("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
-    .click("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
+    .goto('https://www.openprocessing.org/sketch/186320/')
+    .evaluate(d => alert('Olá !'))
+
 
 autonomous
+    .task('task3')
+    .newPage()
+    .goto('https://www.openprocessing.org/sketch/186320/')
+    .evaluate(d => alert('Olá !'))
+
+autonomous
+    .task('task4')
+    .newPage()
+    .goto('https://www.openprocessing.org/sketch/186320/')
+    .evaluate(d => alert('Olá !'))
+autonomous
+    .parallel(['task1', 'task2'])
+    .series(['task4', 'task3'])
     .build()
-    .run()
+    // .run({ stdio: 'inherit' })

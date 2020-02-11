@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@pedrobr/autonomous@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@pedrobr/autonomous/-/autonomous-0.9.0.tgz#b12d5e1b8e422d730aed47654c9de369d062069c"
+  integrity sha512-M2GjFGQuYPnSnLAPcNX2/WIguIYlkLc2K4pKFVFRXzXwFaI/6dkBN6Rw+TavENoHe29qbwrrzCTe5yFh4LuqSA==
+  dependencies:
+    axios "^0.19.2"
+    puppeteer-core "^2.1.0"
+
 "@types/mime-types@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@types/mime-types/-/mime-types-2.1.0.tgz#9ca52cda363f699c69466c2a6ccdaad913ea7a73"
