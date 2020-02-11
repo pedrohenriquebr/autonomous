@@ -26,8 +26,8 @@ autonomous
     .newPage()
     .goto('http://www.google.com')
     .type("input[name='q']", "Why do I have to use Puppeteer ?")
-    .waitForSelector("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
-    .click("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
+    .waitForSelector("input[name=btnK]")
+    .click("input[name=btnK]")
 
 autonomous
     .build()
@@ -41,8 +41,8 @@ const task1 = (async () => {
    const ikCGDtuCgA = await autonomous._browser.newPage()
    await ikCGDtuCgA.goto("http://www.google.com")
    await ikCGDtuCgA.type("input[name='q']","Why do I have to use Puppeteer ?")
-   await ikCGDtuCgA.waitForSelector("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
-   await ikCGDtuCgA.click("#tsf > div:nth-child(2) > div.A8SBwf.emcav > div.UUbT9 > div.aajZCb > div.tfB0Bf > center > input.gNO89b")
+   await ikCGDtuCgA.waitForSelector("input[name=btnK]")
+   await ikCGDtuCgA.click("input[name=btnK]")
 
 });
 
