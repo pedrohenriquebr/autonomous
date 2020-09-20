@@ -53,7 +53,3 @@ const autonomous = require('./index');
    await autonomous.closeConnection();
 })()
 ```
-
-Yes, this is a very ugly thing 🤓
-
-This is basic library on progress...
